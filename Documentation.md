@@ -2,7 +2,7 @@
 publish: true
 ---
 
-## FrontMatter
+## FrontMatters
 
 Example of Frontmatter
 ```YAML
