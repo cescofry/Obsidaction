@@ -23,6 +23,9 @@ inputs:
     options:
     - Kg
     - lbs
+
+output:
+	dateFormat: “YYYY-MM-dd.md”
 ---
 ```
 
@@ -117,14 +120,14 @@ Description of all supported inputs
 
 ```YAML
 	output:
-		dateFormatToFolder: “YYYY-MM-dd”
+		dateFormat: “YYYY-MM-dd.md”
 		insertAfterRegex
 
 ```
 
 Output needs to define in which file and in which position in the file to save.
 
-File strategy: `selectFile`, `dateFormatToFolder`, `sequentialFormatToFolder`
+File strategy: `selectedFile`, `dateFormat`, `sequentialFormat`
 
-Insert strategy: `insertAfterRegex`, `insertBeforeRegex`, nil regex will insert at beginning/end of file.
+Insert strategy: `insertAfterRegex`, `insertBeforeRegex`, where empty regex value will insert at beginning/end of file. If missing defaults to insert at end of file. 
 
