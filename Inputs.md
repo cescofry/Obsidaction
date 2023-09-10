@@ -1,7 +1,7 @@
 ---
 publish: true
 ---
-Description of all supported inputs
+All the inputs for each template are found in the [frontmatter](frontmatter.md) inside the input key. The `id` has to be unique for the file and also referenced as a replaceable in the [Body template](Body%20template.md).
 
 ## textField
 
@@ -59,6 +59,7 @@ Description of all supported inputs
 **value** : (*optional*) pre select one of the option values
 **style** : which picker style to show. **Values**: `dropDown` , `segmented` 
 **options**: the options that can be selected. 
+#todo multiple selection.
 
 ---
 
