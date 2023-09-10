@@ -11,4 +11,3 @@ It is useful for quick tasks that need a well define set of inputs, like weight 
 - [Body template](Body%20template.md)
 - [Output](Output.md)
 
-/pub
