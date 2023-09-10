@@ -4,7 +4,8 @@ publish: true
 
 ## FrontMatter
 
-Example of Frontmatter
+Frontmatter is used to define settings fore the [Inputs](Inputs.md) that then need to be replaced in the rest of the md file. The title for the flow as well as the [Output](Output.md) format is also defined here.
+
 ```YAML
 ---
 
