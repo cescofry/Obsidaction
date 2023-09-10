@@ -1,6 +1,7 @@
 ---
 publish: true
 ---
+The output is part of the [frontmatter](frontmatter.md) yaml and defines in which file and in which position in the file to save the processed [Output](Output.md). 
 
 ```YAML
 	output:
@@ -8,8 +9,6 @@ publish: true
 		insertAfterRegex
 
 ```
-
-Output needs to define in which file and in which position in the file to save.
 
 File strategy: `selectedFile`, `dateFormat`, `sequentialFormat`
 
