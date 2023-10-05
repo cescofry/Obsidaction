@@ -1,89 +1,95 @@
 ---
 publish: true
 ---
-All the inputs for each template are found in the [frontmatter](frontmatter.md) inside the input key. The `id` has to be unique for the file and also referenced as a replaceable in the [Body template](Body%20template.md).
+
+
+Inputs are the most important feature of Obsidaction. Inputs use a list like syntax to represent elements that can be interacted with when rendered in the app.
+A canonical input will look like this `- [id:type:value] some explanation text` 
+- `id` is a unique identifier for the input. It will be used by the [Body template](Body%20template.md) and by [Bindings](Bindings.md) to reference the value of the input.
+- `type` the type of the input that needs to be represented. each inout type is listed in this page, but some of them can be inferred. Read more in the list below.
+- `value` is an optional value that is assigned as default. For example a picker may decide to have one of its options pre-selected.
+- `description` everything after the `[]` is considered a description and will be placed, where possible, beside the input when rendered.
 
 ## textField
 
-```YAML
-- id: <UNIQUE ID>
+```
+- [id:number:value] description
+```
 
-  textField:
-    value: “”
-    placeholder: “”
-    keyboardType: number
-    lineLimit: 3
+```
+- [id] description
 ```
 
 #### Options
 **value**: (*optional*)starting value
-**placeholder**: (*optional*) placeholder hint that shows on an empty value. 
-
-**keyboardType** : (*optional*) what kind of keyboard should textfield being associated with. **Values**: `default`, `number`, `email` 
-
-**lineLimit** : (*optional*) how many lines are shown. This will switch from textField to textArea for any value greater than 1
-
+**type** :  the type is used to either define the keyboard type (`number`, `email`) or if this is a `textField`or a `textArea`
+**description**: (*optional*) placeholder hint that shows on an empty value. 
+> An input with only the `id` defined will default to a `textField` with a standard keyboard. 
 ---
 
 ## toggle
 
-```YAML
-- id: <UNIQUE ID>
-
-  toggle:
-
-    value: true
+```
+- [id:true] description
 ```
 
 #### Options
-
-**value** : defaults the toggle to On. False if omitted. 
+**value**: A toggle is defined by its value, differently from other inputs, it does not specify it's type. Instead if the value represents a boolean (`true`, `false`, `on`, `off`, `yes`, `no`) it will be rendered as a toggle
+**description**: (*optional*) This will be rendered before the toggle.
 
 ---
 
 ## picker
 
-```YAML
-- id: <UNIQUE ID>
-
-  picker:
-    value: Kg
-    style: dropDown
-    options:
-    - Kg
-    - lbs
 ```
+- [id:segmented:option 1/option 2:option 2] description
+```
+
+```
+- [id:option 1/option 2] description
+```
+
+
 
 #### Options
 
 **value** : (*optional*) pre select one of the option values
 **style** : which picker style to show. **Values**: `dropDown` , `segmented` 
-**options**: the options that can be selected. 
+**options**: a `/` separated list of the options that can be selected.
+**description**: (*optional*) placeholder hint that shows on an empty value. 
 #todo multiple selection.
 
 ---
 
-## stepper
+## date and time picker
 
-```YAML
-- id: <UNIQUE ID>
-
-  stepper:
-   lowerBound: 0
-   upperBound: 100
-   step: 2
-   value: 10
-   previewStyle: number
 ```
+- [id:@time] description
+```
+
+```
+- [id:@date] description
+```
+
 
 #### Options
 
-**lowerBound** : smaller value the stepper will reached
+**value** : not supported
+**style** : which picker style to show. **Values**: `@time` , `@date` 
+**options**: not suported
+**description**: (*optional*) placeholder hint that shows on an empty value. 
 
-**upperBound** : higher value the stepper will reached
+---
 
-**step** :  every step will increase or decrease by this value
 
-**value** :  the starting value
+## stepper
+#todo  This component has not been implemented yet.
 
-**previewStyle** :  the style representing the preview of the current value. **Values** : `number`, `progress`
+```
+- [id:stepper:0-2-100:10] description
+```
+
+#### Options
+**type** :  `stepper`
+**range** : defines the range with a `lowerBound-stepValue-upperBound` syntax where `lowerBound` and `upperBound` are the limit of the stepper and `stepValue` is the step the value makes when the `+/-` buttons are tapped.
+**value** :  (*optional*) the starting value. `lowerBound`is used if missing.
